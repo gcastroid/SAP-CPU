@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.components.all;
 
-entity alu is 
+entity alu is
    generic (Nbits: integer := 8);
    port(i_a: in std_logic_vector(Nbits-1 downto 0);
 	i_b: in std_logic_vector(Nbits-1 downto 0);
