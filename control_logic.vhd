@@ -10,56 +10,56 @@ use ieee.std_logic_unsigned.all;
 
 entity control_logic is 
    port(i_rst: in std_logic;
-	     i_clk: in std_logic;
-		  i_cf: in std_logic;
-		  i_zf: in std_logic;
-		  i_instruction: in std_logic_vector(3 downto 0);
-		  o_control: out std_logic_vector(15 downto 0));
+	i_clk: in std_logic;
+        i_cf: in std_logic;
+        i_zf: in std_logic;
+	i_instruction: in std_logic_vector(3 downto 0);
+	o_control: out std_logic_vector(15 downto 0));
 end entity;
 
 architecture behave of control_logic is 
    
-	signal s_count: std_logic_vector(2 downto 0);
-	signal s_instruction: std_logic_vector(6 downto 0);
+   signal s_count: std_logic_vector(2 downto 0);
+   signal s_instruction: std_logic_vector(6 downto 0);
 	
 begin 
    
-	-- Instruction step counter
-	process(i_rst, i_clk)
-	begin 
-	   if (i_rst = '0') then
-		   s_count <= (others => '0');
-		elsif (falling_edge(i_clk)) then
-		   if (s_count = "100") then
-    			s_count <= (others => '0');
-			else
-			   s_count <= s_count + 1;
-			end if;
-		end if;
-	end process;
+   -- Instruction step counter
+   process(i_rst, i_clk)
+   begin 
+      if (i_rst = '0') then
+         s_count <= (others => '0');
+      elsif (falling_edge(i_clk)) then
+         if (s_count = "100") then
+    	    s_count <= (others => '0');
+         else
+            s_count <= s_count + 1;
+	 end if;
+      end if;
+   end process;
 	
-	-- Combinational logic
-	s_instruction(2 downto 0) <= s_count;
-	s_instruction(6 downto 3) <= i_instruction;
+   -- Combinational logic
+   s_instruction(2 downto 0) <= s_count;
+   s_instruction(6 downto 3) <= i_instruction;
 	
-	o_control <= "0100000000000100" when  s_instruction(2 downto 0) =     "000" else                                -- fetch t0
-	             "0001010000001000" when  s_instruction(2 downto 0) =     "001" else                                -- fetch t1
-					 "0100100000000000" when  s_instruction(6 downto 0) = "0001010" else                                -- lda t2
-					 "0001001000000000" when  s_instruction(6 downto 0) = "0001011" else                                -- lda t3
-					 "0100100000000000" when  s_instruction(6 downto 0) = "0010010" else                                -- add t2
-					 "0001000010000000" when  s_instruction(6 downto 0) = "0010011" else                                -- add t3
-					 "0000001000100001" when  s_instruction(6 downto 0) = "0010100" else                                -- add t4
-					 "0100100000000000" when  s_instruction(6 downto 0) = "0011010" else                                -- sub t2
-					 "0001000010000000" when  s_instruction(6 downto 0) = "0011011" else                                -- sub t3
-					 "0000001000110001" when  s_instruction(6 downto 0) = "0011100" else                                -- sub t4
-					 "0100100000000000" when  s_instruction(6 downto 0) = "0100010" else                                -- sta t2
-					 "0100001000000000" when  s_instruction(6 downto 0) = "0100011" else                                -- sta t3
-					 "0000101000000000" when  s_instruction(6 downto 0) = "0101010" else                                -- ldi t2
-					 "0000100000000010" when  s_instruction(6 downto 0) = "0110010" else                                -- jmp t2
-					 "0000100000000010" when (s_instruction(6 downto 0) = "0111010") and (i_cf = '1') else              -- jc t2
-					 "0000100000000010" when (s_instruction(6 downto 0) = "1000010") and (i_zf = '1') else              -- jz t2
-					 "0000000101000000" when  s_instruction(6 downto 0) = "1110010" else                                -- out t2
-					 "1000000000000000" when  s_instruction(6 downto 3) = "1111" else                                   -- halt
-					 "0000000000000000";
+   o_control <= "0100000000000100" when  s_instruction(2 downto 0) =     "000" else                                -- fetch t0
+	        "0001010000001000" when  s_instruction(2 downto 0) =     "001" else                                -- fetch t1
+	        "0100100000000000" when  s_instruction(6 downto 0) = "0001010" else                                -- lda t2
+		"0001001000000000" when  s_instruction(6 downto 0) = "0001011" else                                -- lda t3
+		"0100100000000000" when  s_instruction(6 downto 0) = "0010010" else                                -- add t2
+		"0001000010000000" when  s_instruction(6 downto 0) = "0010011" else                                -- add t3
+		"0000001000100001" when  s_instruction(6 downto 0) = "0010100" else                                -- add t4
+		"0100100000000000" when  s_instruction(6 downto 0) = "0011010" else                                -- sub t2
+		"0001000010000000" when  s_instruction(6 downto 0) = "0011011" else                                -- sub t3
+		"0000001000110001" when  s_instruction(6 downto 0) = "0011100" else                                -- sub t4
+		"0100100000000000" when  s_instruction(6 downto 0) = "0100010" else                                -- sta t2
+		"0100001000000000" when  s_instruction(6 downto 0) = "0100011" else                                -- sta t3
+		"0000101000000000" when  s_instruction(6 downto 0) = "0101010" else                                -- ldi t2
+		"0000100000000010" when  s_instruction(6 downto 0) = "0110010" else                                -- jmp t2
+		"0000100000000010" when (s_instruction(6 downto 0) = "0111010") and (i_cf = '1') else              -- jc t2
+		"0000100000000010" when (s_instruction(6 downto 0) = "1000010") and (i_zf = '1') else              -- jz t2
+		"0000000101000000" when  s_instruction(6 downto 0) = "1110010" else                                -- out t2
+		"1000000000000000" when  s_instruction(6 downto 3) = "1111" else                                   -- halt
+		"0000000000000000";
 	
 end behave;
