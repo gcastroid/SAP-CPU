@@ -12,13 +12,13 @@ architecture test of cpu_tb is
    
    signal rst: std_logic;
    signal clk: std_logic;
-   signal output: std_logic_vector(7 downto 0);
+   signal out_data: std_logic_vector(7 downto 0);
 	
    constant t: time := 20 ns;
 	
 begin
 
-   dut: entity work.cpu(structure) port map (rst, clk, output);
+   dut: entity work.cpu(structure) port map (rst, clk, out_data);
 	
    -- Clock signal
    process
