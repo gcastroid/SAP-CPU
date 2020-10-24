@@ -1,0 +1,30 @@
+add wave -position insertpoint  \
+sim:/cpu/i_rst \
+sim:/cpu/i_clk \
+sim:/cpu/o_data \
+sim:/cpu/s_bus \
+sim:/cpu/r_regA \
+sim:/cpu/r_regB \
+sim:/cpu/r_mem_addr \
+sim:/cpu/s_instruction \
+sim:/cpu/s_clk \
+sim:/cpu/s_hlt \
+sim:/cpu/s_mi \
+sim:/cpu/s_ri \
+sim:/cpu/s_ro \
+sim:/cpu/s_ii \
+sim:/cpu/s_io \
+sim:/cpu/s_ai \
+sim:/cpu/s_ao \
+sim:/cpu/s_bi \
+sim:/cpu/s_eo \
+sim:/cpu/s_su \
+sim:/cpu/s_oi \
+sim:/cpu/s_ce \
+sim:/cpu/s_co \
+sim:/cpu/s_jp
+force -freeze sim:/cpu/i_clk 0 0, 1 {10000 ps} -r 20000
+force i_rst 0
+run 20 ns
+force i_rst 1
+run 1 ms
