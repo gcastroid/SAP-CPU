@@ -48,24 +48,15 @@ begin
    s_clk <= (not s_hlt) and i_clk;
 
    -- Reg A
-   RegA: reg port map (i_rst, s_clk, s_ai, s_ao, s_bus, r_regA, s_bus);
+   RegA: reg generic map (8) port map (i_rst, s_clk, s_ai, s_ao, s_bus, r_regA, s_bus);
    -- Reg B
-   RegB: reg port map (i_rst, s_clk, s_bi, '0', s_bus, r_regB, open);
+   RegB: reg generic map (8) port map (i_rst, s_clk, s_bi, '0', s_bus, r_regB, open);
    -- Instruction Reg
    RegI: instruction_reg port map (i_rst, s_clk, s_ii, s_io, s_bus, s_instruction, s_bus);
    -- Output Reg
-   RegO: reg port map (i_rst, s_clk, s_oi, '0', s_bus, o_data, open);
+   RegO: reg generic map (8) port map (i_rst, s_clk, s_oi, '0', s_bus, o_data, open);
    -- Memory Addr Reg
-   process(i_rst, s_clk)
-   begin
-      if (i_rst = '0') then
-         r_mem_addr <= (others => '0');
-      elsif (rising_edge(s_clk)) then
-         if (s_mi = '1') then
-	    r_mem_addr <= s_bus(3 downto 0);
-	 end if;
-      end if;
-   end process;
+   RegM: reg generic map (4) port map (i_rst, s_clk, s_mi, '0', s_bus(3 downto 0), r_mem_addr, open);
    -- Flags Reg 
    process(i_rst, s_clk)
    begin
