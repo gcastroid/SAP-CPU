@@ -18,7 +18,7 @@ architecture test of reg_tb is
 	
 begin
 
-   dut: entity work.reg port map (rst, clk, en, oe, input, output, output_bus);
+   dut: entity work.reg generic map (8) port map (rst, clk, en, oe, input, output, output_bus);
 	
    -- Clock signal
    process
