@@ -63,13 +63,14 @@ component ram is
 end component;
 
 component reg is 
+   generic (Nbits: integer);
    port(i_rst: in std_logic;
 	i_clk: in std_logic;
 	i_en: in std_logic;
 	i_oe: in std_logic;
-	i_data: in std_logic_vector(7 downto 0);
-        o_data: out std_logic_vector(7 downto 0);
-	o_data_bus: out std_logic_vector(7 downto 0));
+	i_data: in std_logic_vector(Nbits-1 downto 0);
+        o_data: out std_logic_vector(Nbits-1 downto 0);
+	o_data_bus: out std_logic_vector(Nbits-1 downto 0));
 end component;
 
 --------------------------------------------------------------------
