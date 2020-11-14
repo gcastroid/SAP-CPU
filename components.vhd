@@ -63,7 +63,7 @@ component ram is
 end component;
 
 component reg is 
-   generic (Nbits: integer);
+   generic(Nbits: integer);
    port(i_rst: in std_logic;
 	i_clk: in std_logic;
 	i_en: in std_logic;
