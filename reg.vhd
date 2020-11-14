@@ -2,18 +2,19 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity reg is 
+   generic(Nbits: integer);
    port(i_rst: in std_logic;
 	i_clk: in std_logic;
 	i_en: in std_logic;
 	i_oe: in std_logic;
-	i_data: in std_logic_vector(7 downto 0);
-        o_data: out std_logic_vector(7 downto 0);
-	o_data_bus: out std_logic_vector(7 downto 0));
+	i_data: in std_logic_vector(Nbits-1 downto 0);
+        o_data: out std_logic_vector(Nbits-1 downto 0);
+	o_data_bus: out std_logic_vector(Nbits-1 downto 0));
 end entity;
 
 architecture behave of reg is 
 
-   signal r_data: std_logic_vector(7 downto 0);
+   signal r_data: std_logic_vector(Nbits-1 downto 0);
 
 begin
 
