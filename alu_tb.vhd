@@ -33,6 +33,9 @@ begin
       wait for t;
       sub <= '1';
       wait for t;
+      inputA <= "00000011";
+      inputB <= "00001111";
+      wait for t;
       sub <= '0';
       inputB <= "00000000";
       wait for t;
