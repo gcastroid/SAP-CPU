@@ -33,7 +33,7 @@ begin
    o_cf <= s_carry(Nbits);
 	
    -- Zero flag 
-   o_zf <= '1' when s_res = (Nbits-1 downto 0 => '0') else '0';
+   o_zf <= '1' when s_res = (s_res'range => '0') else '0';
 	
    -- ALU result
    o_res <= s_res;
