@@ -6,7 +6,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 
 entity control_logic is 
    port(i_rst: in std_logic;
@@ -14,12 +14,13 @@ entity control_logic is
         i_cf: in std_logic;
         i_zf: in std_logic;
 	i_instruction: in std_logic_vector(3 downto 0);
+	o_step_counter: out std_logic_vector(2 downto 0);
 	o_control: out std_logic_vector(15 downto 0));
 end entity;
 
 architecture behave of control_logic is 
    
-   signal s_count: std_logic_vector(2 downto 0);
+   signal s_count: unsigned(2 downto 0);
    signal s_instruction: std_logic_vector(6 downto 0);
 	
 begin 
@@ -37,9 +38,10 @@ begin
 	 end if;
       end if;
    end process;
+   o_step_counter <= std_logic_vector(s_count);
 	
    -- Combinational logic
-   s_instruction(2 downto 0) <= s_count;
+   s_instruction(2 downto 0) <= std_logic_vector(s_count);
    s_instruction(6 downto 3) <= i_instruction;
 	
    o_control <= "0100000000000100" when  s_instruction(2 downto 0) =     "000" else                                -- fetch t0
