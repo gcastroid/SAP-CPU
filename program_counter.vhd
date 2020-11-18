@@ -1,6 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 
 entity program_counter is 
    port(i_rst: in std_logic;
@@ -15,7 +15,7 @@ end entity;
 
 architecture behave of program_counter is 
    
-   signal s_count: std_logic_vector(3 downto 0);
+   signal s_count: unsigned(3 downto 0);
 	
 begin 
 
@@ -25,14 +25,14 @@ begin
          s_count <= (others => '0');
       elsif (rising_edge(i_clk)) then
          if (i_ld = '1') then
-	    s_count <= i_data;
+	    s_count <= unsigned(i_data);
          elsif (i_en = '1') then
 	    s_count <= s_count + 1;
          end if;
       end if;
    end process;
 	      
-   o_data <= s_count;
-   o_data_bus <= s_count when i_oe = '1' else (others => 'Z');
+   o_data <= std_logic_vector(s_count);
+   o_data_bus <= std_logic_vector(s_count) when i_oe = '1' else (others => 'Z');
 
 end behave;
