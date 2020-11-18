@@ -15,7 +15,7 @@ architecture behave of cpu is
    signal r_regA: std_logic_vector(7 downto 0);
    signal r_regB: std_logic_vector(7 downto 0);
    signal s_pc: std_logic_vector(3 downto 0);
-   signal s_step_counter: std_logic_vector(3 downto 0);
+   signal s_step_counter: std_logic_vector(2 downto 0);
    signal r_mem_addr: std_logic_vector(3 downto 0);
    signal s_instruction: std_logic_vector(3 downto 0);
    signal s_clk: std_logic;
