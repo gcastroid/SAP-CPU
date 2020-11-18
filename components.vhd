@@ -29,6 +29,7 @@ component control_logic is
 	i_cf: in std_logic;
 	i_zf: in std_logic;
 	i_instruction: in std_logic_vector(3 downto 0);
+	o_step_counter: out std_logic_vector(2 downto 0);
 	o_control: out std_logic_vector(15 downto 0));
 end component;
 
