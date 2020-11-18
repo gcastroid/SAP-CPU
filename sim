@@ -6,6 +6,7 @@ sim:/cpu/s_bus \
 sim:/cpu/r_regA \
 sim:/cpu/r_regB \
 sim:/cpu/s_pc \
+sim:/cpu/s_step_counter \
 sim:/cpu/r_mem_addr \
 sim:/cpu/s_instruction \
 sim:/cpu/s_clk \
