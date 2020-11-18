@@ -15,6 +15,7 @@ architecture behave of cpu is
    signal r_regA: std_logic_vector(7 downto 0);
    signal r_regB: std_logic_vector(7 downto 0);
    signal s_pc: std_logic_vector(3 downto 0);
+   signal s_step_counter: std_logic_vector(3 downto 0);
    signal r_mem_addr: std_logic_vector(3 downto 0);
    signal s_instruction: std_logic_vector(3 downto 0);
    signal s_clk: std_logic;
@@ -81,7 +82,7 @@ begin
    memory: ram port map (s_clk, r_mem_addr, s_bus, s_ri, s_ro, s_bus);
 	
    -- Control
-   control: control_logic port map (i_rst, s_clk, r_cf, r_zf, s_instruction, s_control);
+   control: control_logic port map (i_rst, s_clk, r_cf, r_zf, s_instruction, s_step_counter,  s_control);
    s_hlt <= s_control(15);
    s_mi <= s_control(14);
    s_ri <= s_control(13);
