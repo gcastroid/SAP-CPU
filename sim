@@ -9,6 +9,8 @@ sim:/cpu/s_step_counter \
 sim:/cpu/s_pc \
 sim:/cpu/r_mem_addr \
 sim:/cpu/s_instruction \
+sim:/cpu/r_zf \
+sim:/cpu/r_cf \
 sim:/cpu/s_clk \
 sim:/cpu/s_hlt \
 sim:/cpu/s_mi \
@@ -24,7 +26,8 @@ sim:/cpu/s_su \
 sim:/cpu/s_oi \
 sim:/cpu/s_ce \
 sim:/cpu/s_co \
-sim:/cpu/s_jp
+sim:/cpu/s_jp \
+sim:/cpu/s_fi
 force -freeze sim:/cpu/i_clk 0 0, 1 {10000 ps} -r 20000
 force i_rst 0
 run 20 ns
