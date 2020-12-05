@@ -18,7 +18,7 @@ architecture test of cpu_tb is
 	
 begin
 
-   dut: entity work.cpu(structure) port map (rst, clk, out_data);
+   dut: entity work.cpu port map (rst, clk, out_data);
 	
    -- Clock signal
    process
