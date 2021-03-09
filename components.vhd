@@ -23,7 +23,7 @@ component alu is
 	o_zf: out std_logic);
 end component;
 
-component control_logic is 
+component control is 
    port(i_rst: in std_logic;
 	i_clk: in std_logic;
 	i_cf: in std_logic;
