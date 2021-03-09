@@ -89,3 +89,13 @@ component seven_seg_cathode is
 end component;
 
 end components;
+--------------------------------------------------------------------
+-- Clock Divider
+--------------------------------------------------------------------
+
+component clk_div is
+   port(
+   i_rst: in std_logic;
+   i_clk: in std_logic;
+   o_clk: out std_logic);
+end component;
