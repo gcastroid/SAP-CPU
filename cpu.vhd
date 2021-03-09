@@ -82,19 +82,19 @@ begin
    memory: ram port map (s_clk, r_mem_addr, s_bus, s_ri, s_ro, s_bus);
 	
    -- Control
-   control: control_logic port map (i_rst, s_clk, r_cf, r_zf, s_instruction, s_step_counter, s_control);
+   control_circuit: control port map (i_rst, s_clk, r_cf, r_zf, s_instruction, s_step_counter, s_control);
    s_hlt <= s_control(15);
    s_mi <= s_control(14);
    s_ri <= s_control(13);
    s_ro <= s_control(12);
-   s_io <= s_control(11);
-   s_ii <= s_control(10);
+   s_ii <= s_control(11);
+   s_io <= s_control(10);
    s_ai <= s_control(9);
    s_ao <= s_control(8);
    s_bi <= s_control(7);
-   s_oi <= s_control(6);
-   s_eo <= s_control(5);
-   s_su <= s_control(4);
+   s_eo <= s_control(6);
+   s_su <= s_control(5);
+   s_oi <= s_control(4);
    s_ce <= s_control(3);
    s_co <= s_control(2);
    s_jp <= s_control(1);
