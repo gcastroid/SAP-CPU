@@ -3,12 +3,13 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity ram is
-   port(i_clk: in std_logic;
-	i_addr: in std_logic_vector(3 downto 0);
-	i_data: in std_logic_vector(7 downto 0);
-	i_we: in std_logic;
-	i_oe: in std_logic;
-	o_data: out std_logic_vector(7 downto 0));
+   port(
+   i_clk: in std_logic;
+   i_addr: in std_logic_vector(3 downto 0);
+   i_data: in std_logic_vector(7 downto 0);
+   i_we: in std_logic;
+   i_oe: in std_logic;
+   o_data: out std_logic_vector(7 downto 0));
 end entity;
 
 architecture behave of ram is 
