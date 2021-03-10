@@ -9,8 +9,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity seven_seg_cathode is 
-   port(i_binary: in std_logic_vector(3 downto 0);
-	o_display: out std_logic_vector(7 downto 0));
+   port(
+   i_binary: in std_logic_vector(3 downto 0);
+   o_display: out std_logic_vector(7 downto 0));
 end entity;
 
 architecture behave of seven_seg_cathode is 
