@@ -1,17 +1,21 @@
+vsim -gui work.cpu(behave)
 add wave -position insertpoint  \
 sim:/cpu/i_rst \
 sim:/cpu/i_clk \
-sim:/cpu/o_data \
+sim:/cpu/o_disp1 \
+sim:/cpu/o_disp2 \
+sim:/cpu/s_data \
 sim:/cpu/s_bus \
+sim:/cpu/s_alu \
 sim:/cpu/r_regA \
 sim:/cpu/r_regB \
-sim:/cpu/s_step_counter \
 sim:/cpu/s_pc \
+sim:/cpu/s_step_counter \
 sim:/cpu/r_mem_addr \
 sim:/cpu/s_instruction \
+sim:/cpu/s_clk \
 sim:/cpu/r_zf \
 sim:/cpu/r_cf \
-sim:/cpu/s_clk \
 sim:/cpu/s_hlt \
 sim:/cpu/s_mi \
 sim:/cpu/s_ri \
