@@ -96,8 +96,6 @@ component seven_seg_cathode is
    i_binary: in std_logic_vector(3 downto 0);
    o_display: out std_logic_vector(7 downto 0));
 end component;
-
-end components;
 	
 --------------------------------------------------------------------
 -- Clock Divider
@@ -109,3 +107,5 @@ component clk_div is
    i_clk: in std_logic;
    o_clk: out std_logic);
 end component;
+	
+end components;
