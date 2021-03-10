@@ -3,15 +3,16 @@ use ieee.std_logic_1164.all;
 use work.components.all;
 
 entity alu is
-   generic (Nbits: integer := 8);
-   port(i_a: in std_logic_vector(Nbits-1 downto 0);
-	i_b: in std_logic_vector(Nbits-1 downto 0);
-	i_sub: in std_logic;
-	i_oe: in std_logic;
-	o_res: out std_logic_vector(Nbits-1 downto 0);
-	o_res_bus: out std_logic_vector(Nbits-1 downto 0);
-	o_cf: out std_logic;
-	o_zf: out std_logic);
+   generic(Nbits: integer := 8);
+   port(
+   i_a: in std_logic_vector(Nbits-1 downto 0);
+   i_b: in std_logic_vector(Nbits-1 downto 0);
+   i_sub: in std_logic;
+   i_oe: in std_logic;
+   o_res: out std_logic_vector(Nbits-1 downto 0);
+   o_res_bus: out std_logic_vector(Nbits-1 downto 0);
+   o_cf: out std_logic;
+   o_zf: out std_logic);
 end entity;
 
 architecture behave of alu is 
