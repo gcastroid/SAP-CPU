@@ -3,14 +3,15 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity program_counter is 
-   port(i_rst: in std_logic;
-	i_clk: in std_logic;
-	i_ld: in std_logic;
-	i_en: in std_logic;
-	i_oe: in std_logic;
-	i_data: in std_logic_vector(3 downto 0);
-	o_data: out std_logic_vector(3 downto 0);
-	o_data_bus: out std_logic_vector(3 downto 0));
+   port(
+   i_rst: in std_logic;
+   i_clk: in std_logic;
+   i_ld: in std_logic;
+   i_en: in std_logic;
+   i_oe: in std_logic;
+   i_data: in std_logic_vector(3 downto 0);
+   o_data: out std_logic_vector(3 downto 0);
+   o_data_bus: out std_logic_vector(3 downto 0));
 end entity;
 
 architecture behave of program_counter is 
